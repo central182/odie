@@ -16,7 +16,7 @@ import (
 
 func TestDictionaryService(t *testing.T) {
 	t.Run("The DictionaryService", func(t *testing.T) {
-		t.Run("can't be constructed from a nil Client", func(t *testing.T) {
+		t.Run("can't be constructed from a nil Client.", func(t *testing.T) {
 			assert.Panics(t, func() {
 				dictionary_service_odapi.New(nil)
 			})
@@ -29,7 +29,7 @@ func TestGetEntries(t *testing.T) {
 	defer ctrl.Finish()
 
 	t.Run("The GetEntries can't be called", func(t *testing.T) {
-		t.Run("if a nil Headword is provided", func(t *testing.T) {
+		t.Run("if a nil Headword is provided.", func(t *testing.T) {
 			dsvc := dictionary_service_odapi.New(odapi_mock.NewMockClient(ctrl))
 			es, err := dsvc.GetEntries(nil)
 			assert.Zero(t, es)

@@ -1,3 +1,5 @@
+//go:generate mockgen -source $GOFILE -package dictionary_service_mock -destination mock/$GOFILE
+
 package dictionary_service
 
 import (
