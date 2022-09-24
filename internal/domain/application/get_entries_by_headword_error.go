@@ -1,3 +1,5 @@
+//go:generate mockgen -source $GOFILE -package application_mock -destination mock/$GOFILE
+
 package application
 
 import (
