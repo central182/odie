@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/central182/odie/internal/program"
+)
 
 func main() {
-	fmt.Println("hello world")
+	program.Execute()
 }
