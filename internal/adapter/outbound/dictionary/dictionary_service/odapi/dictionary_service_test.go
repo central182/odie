@@ -254,6 +254,14 @@ func bestEffort() getEntriesFixture {
 								Senses: []odapi.Sense{
 									{
 										Definitions: []string{"since when has best-effort become a combining form?"},
+										Subsenses: []odapi.Sense{
+											{
+												CrossReferenceMarkers: []string{"refer to that subsense as well"},
+											},
+										},
+									},
+									{
+										CrossReferenceMarkers: []string{"refer to that sense as well"},
 									},
 								},
 							},
@@ -285,6 +293,14 @@ func bestEffort() getEntriesFixture {
 		Senses: []entry.NewSenseInput{
 			{
 				Description: "since when has best-effort become a combining form?",
+				Subsenses: []entry.NewSubsenseInput{
+					{
+						Description: "refer to that subsense as well",
+					},
+				},
+			},
+			{
+				Description: "refer to that sense as well",
 			},
 		},
 	})

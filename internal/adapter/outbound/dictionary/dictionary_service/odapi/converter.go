@@ -30,7 +30,12 @@ func unmarshalSubsense(
 	sub odapi.Sense,
 ) entry.NewSubsenseInput {
 	return entry.NewSubsenseInput{
-		Description: strings.Join(sub.Definitions, "; "),
+		Description: func() string {
+			var candidates []string
+			candidates = append(candidates, sub.Definitions...)
+			candidates = append(candidates, sub.CrossReferenceMarkers...)
+			return strings.Join(candidates, "; ")
+		}(),
 		Examples: func() (egs []string) {
 			for _, eg := range sub.Examples {
 				egs = append(egs, eg.Text)
@@ -54,7 +59,12 @@ func unmarshalSense(
 	s odapi.Sense,
 ) entry.NewSenseInput {
 	return entry.NewSenseInput{
-		Description: strings.Join(s.Definitions, "; "),
+		Description: func() string {
+			var candidates []string
+			candidates = append(candidates, s.Definitions...)
+			candidates = append(candidates, s.CrossReferenceMarkers...)
+			return strings.Join(candidates, "; ")
+		}(),
 		Examples: func() (egs []string) {
 			for _, eg := range s.Examples {
 				egs = append(egs, eg.Text)
