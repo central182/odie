@@ -246,10 +246,36 @@ func bestEffort() getEntriesFixture {
 					},
 				},
 			},
+			{
+				LexicalEntries: []odapi.LexicalEntry{
+					{
+						Entries: []odapi.Entry{
+							{
+								Senses: []odapi.Sense{
+									{
+										Definitions: []string{"since when has best-effort become a combining form?"},
+										Subsenses: []odapi.Sense{
+											{
+												CrossReferenceMarkers: []string{"refer to that subsense as well"},
+											},
+										},
+									},
+									{
+										CrossReferenceMarkers: []string{"refer to that sense as well"},
+									},
+								},
+							},
+						},
+						LexicalCategory: odapi.LexicalCategory{
+							Id: "combiningForm",
+						},
+					},
+				},
+			},
 		},
 	}
 
-	e, eerr := entry.New(entry.NewInput{
+	e1, eerr := entry.New(entry.NewInput{
 		Headword:        "best-effort",
 		LexicalCategory: "adjective",
 		Senses: []entry.NewSenseInput{
@@ -261,7 +287,27 @@ func bestEffort() getEntriesFixture {
 	if eerr != nil {
 		panic(eerr)
 	}
-	es := []entry.Entry{e}
+	e2, eerr := entry.New(entry.NewInput{
+		Headword:        "best-effort",
+		LexicalCategory: "combining form",
+		Senses: []entry.NewSenseInput{
+			{
+				Description: "since when has best-effort become a combining form?",
+				Subsenses: []entry.NewSubsenseInput{
+					{
+						Description: "refer to that subsense as well",
+					},
+				},
+			},
+			{
+				Description: "refer to that sense as well",
+			},
+		},
+	})
+	if eerr != nil {
+		panic(eerr)
+	}
+	es := []entry.Entry{e1, e2}
 
 	return getEntriesFixture{h, req, resp, es}
 }

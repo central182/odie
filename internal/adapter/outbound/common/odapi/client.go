@@ -51,9 +51,10 @@ type Pronunciation struct {
 }
 
 type Sense struct {
-	Definitions []string
-	Examples    []Example
-	Subsenses   []Sense
+	Definitions           []string
+	CrossReferenceMarkers []string
+	Examples              []Example
+	Subsenses             []Sense
 }
 
 type Example struct {
