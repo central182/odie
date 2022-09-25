@@ -13,8 +13,9 @@ import (
 )
 
 var replCmd = &cobra.Command{
-	Use:  "repl",
-	Args: cobra.NoArgs,
+	Use:   "repl",
+	Short: "Look words up in an interactive session",
+	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		var config Config
 		err := viper.Unmarshal(&config)
