@@ -12,8 +12,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:  "odie HEADWORD",
-	Args: cobra.ExactArgs(1),
+	Use:   "odie HEADWORD",
+	Short: "Look up a single word",
+	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		var config Config
 		err := viper.Unmarshal(&config)
