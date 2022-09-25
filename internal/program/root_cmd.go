@@ -57,6 +57,6 @@ func initConfig() {
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil {
-		cobra.CheckErr(err)
+		fmt.Println(err)
 	}
 }
