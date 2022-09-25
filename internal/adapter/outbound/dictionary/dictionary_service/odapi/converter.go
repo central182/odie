@@ -84,10 +84,17 @@ func unmarshalEntries(
 	var result []entry.Entry
 	for _, e := range es {
 		newInput := entry.NewInput{
-			Headword:        headword,
-			LexicalCategory: lexicalCategory,
-			Senses:          unmarshalSenses(e.Senses),
-			Pronunciations:  unmarshalPronunciations(e.Pronunciations),
+			Headword: headword,
+			LexicalCategory: func() string {
+				// Solve the inconsistency between our assumption
+				// and Oxford Dictionary API's representation.
+				if lexicalCategory == "combiningForm" {
+					return entry.CombiningForm{}.Name()
+				}
+				return lexicalCategory
+			}(),
+			Senses:         unmarshalSenses(e.Senses),
+			Pronunciations: unmarshalPronunciations(e.Pronunciations),
 		}
 
 		e, eerr := entry.New(newInput)
